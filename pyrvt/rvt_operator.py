@@ -23,12 +23,15 @@ Description: Provides a command line iterface for performing RVT calculations.
 '''
 
 
+from __future__ import division
+
 import argparse
 import csv
 import glob
 import os
 
 import numpy as np
+from itertools import imap
 
 try:
     import xlrd
@@ -166,7 +169,7 @@ def export_events(filename, reference, reference_label, response_key,
         wb = openpyxl.Workbook()
         ws = wb.create_sheet()
 
-        map(ws.append, rows)
+        imap(ws.append, rows)
 
         wb.save(filename)
     else:
