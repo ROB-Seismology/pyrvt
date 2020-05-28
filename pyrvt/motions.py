@@ -3,11 +3,13 @@
 
 """Random vibration theory motions."""
 
+from __future__ import division
 import numpy as np
 
 from scipy.interpolate import interp1d
 
 from pyrvt import peak_calculators
+from itertools import izip
 
 
 def compute_sdof_tf(freqs, osc_freq, osc_damping):
@@ -319,7 +321,7 @@ class CompatibleRvtMotion(RvtMotion):
         fourier_amps = np.empty_like(osc_freqs)
 
         for i, (osc_freq, osc_resp) in enumerate(
-                zip(osc_freqs, osc_resp_target)):
+                izip(osc_freqs, osc_resp_target)):
             fa_sqr_cur = (
                 ((self.duration * osc_resp ** 2) / (2 * peak_factor ** 2) -
                  total) / (osc_freq * sdof_factor))
