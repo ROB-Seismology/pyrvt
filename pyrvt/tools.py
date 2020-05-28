@@ -3,6 +3,8 @@
 
 """Tools for reading/writing of input/output files."""
 
+from __future__ import division
+
 import csv
 import glob
 import os
@@ -11,6 +13,7 @@ import numpy as np
 
 from pyrvt.peak_calculators import get_peak_calculator, get_region
 from pyrvt import motions
+from itertools import imap
 
 # Try to load the modules required for reading/writing files
 try:
@@ -173,7 +176,7 @@ def write_events(fname, reference, reference_label, response_type,
         wb = openpyxl.Workbook()
         ws = wb.create_sheet()
 
-        map(ws.append, rows)
+        imap(ws.append, rows)
 
         wb.save(fname)
     else:
