@@ -4,6 +4,7 @@
 """Published peak factor models, which compute the expected peak ground
 motion. A specific model may include oscillator duration correction."""
 
+from __future__ import division
 import os
 
 import numpy as np
@@ -113,7 +114,7 @@ class Vanmarcke1975(Calculator):
     ABBREV = 'V75'
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(self.__class__, self).__init__(**kwargs)
 
     def __call__(self, gm_duration, freqs, fourier_amps, **kwargs):
         """Compute the peak factor.
@@ -186,7 +187,7 @@ class DerKiureghian1985(Calculator):
     ABBREV = 'DK85'
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(self.__class__, self).__init__(**kwargs)
 
     def __call__(self, gm_duration, freqs, fourier_amps, **kwargs):
         """Compute the peak factor.
@@ -258,7 +259,7 @@ class ToroMcGuire1987(Calculator):
     ABBREV = 'TM87'
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(self.__class__, self).__init__(**kwargs)
 
     def __call__(self, gm_duration, freqs, fourier_amps, osc_freq=None,
                  osc_damping=None, **kwargs):
@@ -337,7 +338,7 @@ class BooreJoyner1984(Calculator):
     ABBREV = 'BJ84'
 
     def __init__(self, **kwargs):
-        super().__init__(kwargs)
+        super(self.__class__, self).__init__(kwargs)
 
     def __call__(self, gm_duration, freqs, fourier_amps, osc_freq=None,
                  osc_damping=None, **kwargs):
