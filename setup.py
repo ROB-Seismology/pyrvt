@@ -7,7 +7,7 @@ except ImportError:
     from distutils.core import setup
 
 config = {
-    'name': 'pyRVT',
+    'name': 'pyrvt',
     'version': '0.1',
     'description': 'Seismologic Random Vibration Theory',
     'author': 'Albert Kottke',
